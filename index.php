@@ -10,3 +10,4 @@ $actionName = $routeParts[1];
 /*var_dump($controllerClassName);*/
 $controller = new $controllerClassName;
 $controller -> action($actionName);
+
