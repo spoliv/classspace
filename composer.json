@@ -1,0 +1,7 @@
+{
+    "require":
+    {
+        "avvertix/phptimer": "0.1.0",
+        "duncan3dc/swiftmailer": "1.5.x"
+    }
+}
