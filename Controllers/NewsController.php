@@ -1,7 +1,15 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: 1
+ * Date: 10.10.2015
+ * Time: 22:18
+ */
 
-namespace App\Modelky;
+namespace App\Controllers;
 
+use App\Modelky\View as View;
+use App\Modelky\News as News;
 
 class NewsController extends AController
 {

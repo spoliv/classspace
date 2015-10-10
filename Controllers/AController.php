@@ -1,7 +1,13 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: 1
+ * Date: 10.10.2015
+ * Time: 22:19
+ */
 
+namespace App\Controllers;
 
-namespace App\Modelky;
 
 abstract class AController
 {
