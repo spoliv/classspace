@@ -8,7 +8,7 @@
 
 namespace App\Controllers;
 
-use App\Modelky\View as View;
+use App\view\View as View;
 use App\Modelky\News as News;
 
 class NewsController extends AController
