@@ -18,7 +18,7 @@ abstract class AbstractModel
 
     static public function findByPk($id)
     {
-        $sql = 'SELECT * FROM' . ' ' . static::$table/*static::getTableName()*/ . ' ' . 'WHERE id = :id';
+        $sql = 'SELECT * FROM' . ' ' . static::$table . ' ' . 'WHERE id = :id';
         $res = new DBConnection;
         return $res->queryone($sql, $id);
     }
@@ -33,11 +33,45 @@ abstract class AbstractModel
             $values[':' . $column] = $this->$column;
         }
         /*if (!isset($this->id)) {*/
-
         $sql = 'INSERT INTO' . ' ' . static::$table . '
             (' . implode(',', static::$columns) . ')
             VALUE(' . implode(',', $tokens) . ')';
         $res = new DBConnection;
         $res->queryadd($sql, $values);
+        /*}else{
+            $columns = [];
+            foreach (static::$columns as $column) {
+
+                $columns[] = $column . '=:' . $column;
+            }
+
+            $sql = 'UPDATE ' . static::$table . ' SET ' .
+                implode(', ', $columns) . ' WHERE id = :id';
+            $res = new DBConnection;
+            $res->queryedit($sql, $values);
+        }*/
+    }
+
+    public function update($id)
+    {
+        $columns = [];
+        foreach (static::$columns as $column) {
+            $tokens[] = ':' . $column;
+            $values[':' . $column] = $this->$column;
+            $columns[] = $column . '=:' . $column;
+        }
+
+        $sql = 'UPDATE ' . static::$table . ' SET ' .
+            implode(', ', $columns) . ' WHERE id = :id';
+        $res = new DBConnection;
+        $res->queryedit($sql, $values, $id);
+    }
+
+    static public function delete($id)
+    {
+
+        $sql = 'DELETE FROM' . ' ' . static::$table . ' ' . 'WHERE id = :id';
+        $res = new DBConnection;
+        $res->querydel($sql, $id);
     }
 }

@@ -6,47 +6,51 @@ namespace App\Modelky;
 
 class Storage
 
-implements \Countable, \Iterator
+    implements \Countable, \Iterator
 {
     private $__data = [];
+
     public function __set($key, $val)
     {
-        $this -> __data[$key] = $val;
+        $this->__data[$key] = $val;
     }
+
     public function __get($key)
     {
-        return $this -> __data[$key];
+        return $this->__data[$key];
     }
+
     public function count()
     {
-        return  count($this -> __data);
+        return count($this->__data);
     }
 
     public function current()
     {
-        return current($this -> __data);
+        return current($this->__data);
     }
+
     public function next()
     {
-        next($this -> __data);
+        next($this->__data);
     }
+
     public function key()
     {
-        return key($this -> __data);
+        return key($this->__data);
     }
+
     public function valid()
     {
-        if (key($this -> __data)!==null)
-        {
+        if (key($this->__data) !== null) {
             return true;
-        }
-        else
-        {
+        } else {
             return false;
         }
     }
+
     public function rewind()
     {
-        reset($this -> __data);
+        reset($this->__data);
     }
 } 

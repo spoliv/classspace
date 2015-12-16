@@ -3,7 +3,8 @@
 namespace App\Modelky;
 
 
-class DBConnection {
+class DBConnection
+{
 
     public $pdo;
 
@@ -32,7 +33,7 @@ class DBConnection {
     public function queryone($sql, $id)
     {
         $sth = $this->pdo->prepare($sql);
-        $sth->execute([':id'=>$id]);
+        $sth->execute([':id' => $id]);
         return $sth->fetch();
     }
 
@@ -40,6 +41,21 @@ class DBConnection {
     {
         $sth = $this->pdo->prepare($sql);
         $sth->execute($values);
-        die('STOP');
+        header("Location: index.php");
     }
+
+    public function queryedit($sql, $values, $id)
+    {
+        $sth = $this->pdo->prepare($sql);
+        $sth->execute($values + [':id' => $id]);
+        header("Location: index.php");
+    }
+
+    public function querydel($sql, $id)
+    {
+        $sth = $this->pdo->prepare($sql);
+        $sth->execute([':id' => $id]);
+        header("Location: index.php");
+    }
+
 } 

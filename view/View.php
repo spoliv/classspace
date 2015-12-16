@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: 1
- * Date: 10.10.2015
- * Time: 23:04
- */
 
 namespace App\view;
 
